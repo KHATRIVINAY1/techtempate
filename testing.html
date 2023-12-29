@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizontal Card Scroller</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card-scroller {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 20px 0;
+    }
+
+    .card {
+      display: inline-block;
+      width: 300px;
+      margin-right: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-scroller" onmousedown="startScroll(event)">
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200" alt="Card 1">
+    <h3>Card 1</h3>
+    <p>Description for Card 1</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200" alt="Card 2">
+    <h3>Card 2</h3>
+    <p>Description for Card 2</p>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x200" alt="Card 3">
+    <h3>Card 3</h3>
+    <p>Description for Card 3</p>
+  </div>
+  <!-- Add more cards as needed -->
+</div>
+
+<script>
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  function startScroll(e) {
+    isDown = true;
+    startX = e.pageX - document.querySelector('.card-scroller').offsetLeft;
+    scrollLeft = document.querySelector('.card-scroller').scrollLeft;
+  }
+
+  function endScroll() {
+    isDown = false;
+  }
+
+  function scrollCards(e) {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - document.querySelector('.card-scroller').offsetLeft;
+    const walk = (x - startX) * 2;
+    document.querySelector('.card-scroller').scrollLeft = scrollLeft - walk;
+  }
+
+  document.addEventListener('mouseup', endScroll);
+  document.addEventListener('mousemove', scrollCards);
+</script>
+
+</body>
+</html>

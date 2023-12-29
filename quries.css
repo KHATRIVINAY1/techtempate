@@ -1,0 +1,41 @@
+/* rem and em do not depend on html font-size media query */
+/* 1em=1rem = 16px = 1354/16 = 84 */
+
+
+
+  /* for big screens */
+  @media screen and (min-width: 982px) {
+    .hero-section{
+        padding-top: 9rem;
+    }
+}
+
+
+/* for mobiles */
+@media screen and (max-width: 576px) {
+    .illu-wrap{
+        display: none;
+    }
+  }
+
+  /* On screens that are 992px or less*/
+@media screen and (max-width: 982px) {
+    .deco{
+        display: none;
+    }
+    .banner-text{
+        margin-top: 2rem;
+        padding-top: 0px;
+    }
+    .title{
+        margin-top: 0px;
+    }
+}
+@media screen and (max-width: 367px) {
+
+}
+
+
+@media screen and (min-width: 991px) {
+
+}
